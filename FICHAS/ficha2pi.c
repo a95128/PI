@@ -9,7 +9,7 @@ float multInt1(int n, float m) {
         res += m;
         i++;
     }
-printf("%f\n",res);
+
 return res;
 }
 
@@ -25,7 +25,6 @@ float multInt2(int n, float m) {
     m=m*2;
     }
 
-printf("%f\n",res);
 return res;
 }
 
@@ -40,7 +39,7 @@ int mdc1(int a, int b) {
             mdc = i;
         }
     }
-printf("%d\n",mdc);
+
 return mdc;
 }
 
@@ -54,7 +53,7 @@ while(a!=b) {
     if(a<b) {b=b-a;}    
 }
 if (a==0) {res = b;} else {res = a;}
-printf("%d\n",res);
+
 return res; 
 }
 
@@ -71,7 +70,6 @@ int mdc3(int a, int b) {
 
     res = b;
 
-    printf("%d\n", res);
     return res;
 }
 
@@ -82,7 +80,6 @@ int fib1(int n) {
     if (n<2) res =1;
     if (n>=2) res = fib1(n-1) + fib1(n-2);
 
-    printf("%d\n", res);
     return res;
 
 }
@@ -99,7 +96,6 @@ int fib2(int n) {
     }
     else {res = fib1(aux1) + fib1(aux2);}
 
-    printf("%d\n", res);
     return res;
 }
 
@@ -112,7 +108,9 @@ int main() {
     //mdc1(x,y);
     //mdc2(x,y);
    // mdc3(x,y);
-    fib2(x);
+    int res = fib2(x);
+    printf("%d\n",res);
+
     return 0;
 }
 
