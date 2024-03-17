@@ -159,8 +159,8 @@ int iguaisConsecutivos(char s[]) {
 //EXERCICIO 16
 
 int difConsecutivos (char s[]) {
-   int conta1 = 1;
-    int aux = 1; 
+   int conta1 = 0;
+    int aux = 0; 
     for (int i = 0; s[i] != '\0' && s[i + 1] != '\0'; i++) {
         if (s[i] != s[i + 1]) {
             conta1++; 
@@ -176,19 +176,159 @@ int difConsecutivos (char s[]) {
 
 //EXERCICIO 17
 
-int maiorPrefixo (char s1 [], char s2 []) {
+int maiorPrefixo(char s1[], char s2[]) {
+    int conta=0;
+    for (int i = 0; s1[i] != '\0' && s2[i] != '\0'; i++) {
+        if (s1[i] == s2[i])
+            conta++;
+    }
+    return conta;
+}
+
+//EXERCICIO 18
+
+int maiorSufixo(char s1[], char s2[]) {
+    int length1 = strlen(s1);
+    int length2 = strlen(s2);
+    int conta = 0;
+
+    while (length1 > 0 && length2 > 0 && s1[length1 - 1] == s2[length2 - 1]) {
+        conta++;
+        length1--;
+        length2--;
+    }
+
+    return conta;
+}
+
+//EXERCICIO 19
+
+int sufPref (char s1[], char s2[]) {
+    int i = 0;
+    int j = 0;
+    int r = 0;
+
+    while (s1[i] != '\0') {
+        if (s1[i] == s2[j]) {
+            r++;
+            i++;
+            j++;
+        } else {
+            r = 0;
+            j = 0;
+            i++;}
+    }
+    return r;
+}
+
+//EXERCICIO 20
+
+int contaPal (char s[]) {
+    int conta = 0;
+    for(int i = 0; s[i]!='\0';i++) {
+        if(s[i]!=' ' && s[i+1]==' '|| s[i]!=' ' && s[i+1]=='\0' ) {
+            conta++;
+        }
+    }
+    return conta;
+}
+
+//EXERCICIO 21
+
+int contaVogais(char s[]) {
+    int conta = 0;
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] == 'A' || s[i] == 'a' || 
+            s[i] == 'E' || s[i] == 'e' || 
+            s[i] == 'I' || s[i] == 'i' || 
+            s[i] == 'O' || s[i] == 'o' || 
+            s[i] == 'U' || s[i] == 'u') {
+            conta++;
+        }
+    }
+    return conta;
+}
+
+//EXERCICIO 22
+
+int contemchar(char s, char p[]) {
+    for (int i = 0; p[i] != '\0'; i++) {
+        if (s == p[i]) return 1;
+    }
+    return 0;
+}
+
+int contida(char a[], char b[]) {
+    for (int i = 0; a[i] != '\0'; i++) {
+        if (contemchar(a[i], b) == 0) return 0;
+    }
+    return 1;
+}
+
+//EXERCICIO 23
+
+int palindorome (char s[]) {
+    int length = strlen(s);
+    char t[length + 1];
+    strcpy(t,s);
+    for(int i = 0; s[i]!='\0'; i++) {
+        if(t[i] !=  s[length-1-i]) return 0;
+    }
+    return 1;
+}
+
+//EXERCICIO 24
+
+int remRep(char x[]) {
+    int len = 1; 
+    char prev = x[0];
+
+    for (int i = 1; x[i] != '\0'; i++) {
+        if (x[i] != prev) { 
+            x[len] = x[i];
+            len++;
+            prev = x[i];
+        }
+    }
+    x[len] = '\0'; 
+    return len;
+}
+
+//EXERCICIO 25
+
+int limpaEspacos(char t[]) {
+    int length = strlen(t);
+    int i, j;
+
+    for (i = 0, j = 0; t[i] != '\0'; i++) {
+        if (!(t[i] == ' ' && t[i + 1] == ' ')) { 
+            t[j++] = t[i];
+        }
+    }
+    t[j] = '\0'; 
+
+    return j; 
+}
+
+//EXERCICIO 26
+
+void insere (int v[], int N, int x) {
     
 }
 
 int main() {
-    char s1[] = "Hello,";
-    char s2[] = "World";
+    char s1[] = "hello";
+    char s2[] = "world";
     char s3[] = "liberdade, igualdade e fraternidade";
     char s4[] = "aabcccaac";
+    char s5[] = "braga";
+    char s6[] = "bracara augusta";
+    char s7[] = "bracarense";
+    char s8[] = "totalidade";
+    char s9[] = "aaaba  a fas das  sad";
 
     //char* result = mystrcat(s1,s2);
     //printf("%s\n", result);
-
     //char dest[50];
     //char source[] = "Copying this string";
     //mystrcpy(dest, source);
@@ -198,7 +338,17 @@ int main() {
     //truncW(s3,4);
     //char r = charMaisfreq(s3);
     //int r = iguaisConsecutivos(s4);
-    int r = difConsecutivos(s1);
+    //int r = difConsecutivos(s1);
+    //int r = maiorPrefixo(s1,s2);
+    //int r = maiorSufixo(s5,s6);
+    //int r = sufPref(s7,s8); 
+    //int r = contaPal(s9);
+    //int r = contaVogais(s8);
+    //int r = contida(s5, s6);
+    //int r = palindorome(s9);
+    //int r = remRep(s9);
+    int r = limpaEspacos(s9);
+
     printf("%d", r);
     return 0;
 }
